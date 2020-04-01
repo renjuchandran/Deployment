@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<style>
+form {
+    margin: auto;
+    width: 45%;
+}
+
+.result {
+    margin: auto;
+    width: 35%;
+    border: 1px solid #ccc;
+}
+</style>
+
+<head>
+    <title>prediction Model</title>
+</head>
+<form action="{{ url_for('main') }}" method="POST">
+    <fieldset>
+        <legend>Input values:</legend>
+        PROD_CD:
+        <input name="PROD_CD" type="number" required>
+        <br>
+        <br> SLSMAN_CD:
+        <input name="SLSMAN_CD" type="number" required>
+        <br>
+        <br> MONTH:
+        <input name="PLAN_MONTH" type="number" required>
+        <br>
+        <br> YEAR:
+        <input name="PLAN_YEAR" type="number" required>
+        <br>
+        <br> TARGET:
+        <input name="TARGET_IN_EA" type="number" required>
+        <br>
+        <br>
+        <input type="submit">
+    </fieldset>
+</form>
+<br>
+<div class="result" align="center">
+    {% if result %}
+    	{% for variable, value in original_input.items() %}
+    		<b>{{ variable }}</b> : {{ value }}
+    	{% endfor %}
+		<br>
+    	<br> ACHIEVEMENT_IN_EA:
+   		<p style="font-size:50px">{{ result }}</p>
+    {% endif %}
+</div>
+
+</html>
+
+
+
+
+
+
